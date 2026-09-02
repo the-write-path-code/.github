@@ -1,6 +1,6 @@
-# The Write Path Code
+# Building Safe Agentic AI for Enterprise Systems
 
-Companion code for **The Write Path: Building Safe Agentic AI for Enterprise Systems** by Mohit Aggarwal.
+Companion code for **Building Safe Agentic AI for Enterprise Systems** by Mohit Aggarwal.
 
 Each repository here corresponds to a chapter or topic in the book and 
 contains runnable examples you can follow alongside the text. The code 
