@@ -1,8 +1,8 @@
 # Building Safe Agentic AI for Enterprise Systems
 
-Companion code repositories for **Building Safe Agentic AI for Enterprise Systems** by [Mohit Aggarwal](https://github.com/mohitagr18).
+Companion code for **Building Safe Agentic AI for Enterprise Systems** by [Mohit Aggarwal](https://github.com/mohitagr18) · Wiley-IEEE Press.
 
-Each repository corresponds to a chapter in the book and contains runnable, production-grade implementations covering agentic system design, idempotency patterns, race condition settlement, multimodal RAG pipelines, and safe shutdown architectures.
+There's no undo button once an AI agent touches enterprise state — a network retry becomes a duplicate charge, a confident hallucination becomes a corrupted customer record. Each repository below corresponds to a chapter in the book and contains runnable implementations of the patterns that keep write-path agents safe: deterministic guardrails, idempotency keys, optimistic concurrency control, grounded multimodal retrieval, and fail-closed shutdown.
 
 ---
 
@@ -21,28 +21,29 @@ Follow a single production agent request from initial user query to an idempoten
   </picture>
 </a>
 
-> 💡 **Interactive Exploration:** Click the diagram above or open the [Interactive Map](https://the-write-path-code.github.io/.github/) to trace live request flows, filter by system layer, switch color themes, and jump directly to each chapter repository.
+> 💡 **Interactive Exploration:** Click the diagram above or open the [Interactive Map](https://the-write-path-code.github.io/.github/) to trace the request flow and jump directly to each chapter's repository.
 
 ---
 
 ## 📚 Repository Map by Part
 
-| Part / Layer | Chapter | Companion Repository | Key Capability & Invariant |
+A fail-closed rail runs through every layer below: ungrounded or unsafe mutations are halted before execution.
+
+| Part | Chapter | Companion Repository | Key pattern |
 |---|---|---|---|
-| **Fail-Closed Rail** | — | — | **Safe Stop Sink**: Every layer halts ungrounded or unsafe mutations before execution |
-| **Part I · Scripts → Stateful Systems** | Ch 1 | [`ch01-production-reality`](https://github.com/the-write-path-code/ch01-production-reality) | Deterministic guardrails for irreversible systems & watchman trail |
-| | Ch 2 | [`ch02-agent-monolith-trap`](https://github.com/the-write-path-code/ch02-agent-monolith-trap) | Moving from single-prompt monoliths to distributed Google ADK state machines |
-| **Part II · Grounding the Agent** | Ch 6 | [`ch06-multimodal-perception`](https://github.com/the-write-path-code/ch06-multimodal-perception) | Grounded multimodal perception & `PerceptionChunk` contract |
-| | Ch 3 | [`ch03-taming-hallucination-puzzle`](https://github.com/the-write-path-code/ch03-taming-hallucination-puzzle) | Dense and sparse hybrid retrieval with BGE-M3 & Qdrant |
-| | Ch 5 | [`ch5-curing-enterprise-hallucination-crisis`](https://github.com/the-write-path-code/ch5-curing-enterprise-hallucination-crisis) | 3-state CRAG gatekeeper & SR-RAG recursive critique loops |
-| | Ch 4 | [`ch04-debugging-hallucinations-math`](https://github.com/the-write-path-code/ch04-debugging-hallucinations-math) | 5-layer mathematical evaluation stack & calibrated grounding thresholds |
-| **Part III · Context-Aware Actuation** | Ch 7 | [`ch07-proactive-event-driven-agents`](https://github.com/the-write-path-code/ch07-proactive-event-driven-agents) | Event-driven agents, spatial privacy with H3 indexing & local execution |
-| | Ch 8 | [`ch8-model-context-protocol`](https://github.com/the-write-path-code/ch8-model-context-protocol) | Model Context Protocol (MCP) typed schema boundaries & tool execution |
-| | Ch 9 | [`ch09-plant-doctor`](https://github.com/the-write-path-code/ch09-plant-doctor) | End-to-end case study: Multimodal diagnosis & Cloud Run deployment |
-| **Part IV · Hardened Persistence Boundary** | Ch 10 | [`ch10-cloud-agent-patterns`](https://github.com/the-write-path-code/ch10-cloud-agent-patterns) | Stateless FastAPI workers decoupled from volatile in-memory cache |
-| | Ch 14 | [`ch14-enterprise-ai-assistant`](https://github.com/the-write-path-code/ch14-enterprise-ai-assistant)<br>[`ch14-homecare-visit-triage-agent`](https://github.com/the-write-path-code/ch14-homecare-visit-triage-agent) | Deny-by-default action boundaries, policy gates & approval holds |
-| | Ch 11–13 | [`ch11-13-ucp-a2a-payment-integrity`](https://github.com/the-write-path-code/ch11-13-ucp-a2a-payment-integrity) | Request identity, durable idempotency ledgers & optimistic concurrency control (OCC) |
-| **Part V · Continuous Verification** | Ch 15 | [`ch15-agentic-cicd`](https://github.com/the-write-path-code/ch15-agentic-cicd) | Offline eval merge gates, prompt drift detection & automated red-teaming in CI/CD |
+| **Part I · Scripts → Stateful Systems** | Ch 1 | [`ch01-production-reality`](https://github.com/the-write-path-code/ch01-production-reality) | Deterministic guardrails for irreversible systems & the watchman trail |
+| | Ch 2 | [`ch02-agent-monolith-trap`](https://github.com/the-write-path-code/ch02-agent-monolith-trap) | From single-prompt monoliths to distributed state machines with Google ADK |
+| **Part II · Grounding the Agent** | Ch 3 | [`ch03-taming-hallucination-puzzle`](https://github.com/the-write-path-code/ch03-taming-hallucination-puzzle) | Hybrid retrieval (dense + sparse) that stops missing exact part numbers and account IDs |
+| | Ch 4 | [`ch04-debugging-hallucinations-math`](https://github.com/the-write-path-code/ch04-debugging-hallucinations-math) | A 5-layer evaluation stack that pinpoints where a hallucination actually happened |
+| | Ch 5 | [`ch05-curing-enterprise-hallucination-crisis`](https://github.com/the-write-path-code/ch05-curing-enterprise-hallucination-crisis) | Corrective RAG that repairs incomplete or stale evidence instead of guessing |
+| | Ch 6 | [`ch06-multimodal-perception`](https://github.com/the-write-path-code/ch06-multimodal-perception) | Typed perception contracts (`PerceptionChunk`) across PDFs, images, and audio |
+| **Part III · Context-Aware Actuation** | Ch 7 | [`ch07-proactive-event-driven-agents`](https://github.com/the-write-path-code/ch07-proactive-event-driven-agents) | Event-driven agents with spatial privacy via H3 indexing and local execution |
+| | Ch 8 | [`ch08-model-context-protocol`](https://github.com/the-write-path-code/ch08-model-context-protocol) | MCP typed schema boundaries that sandbox tool definitions |
+| | Ch 9 | [`ch09-plant-doctor`](https://github.com/the-write-path-code/ch09-plant-doctor) | End-to-end case study: multimodal diagnosis deployed to Cloud Run |
+| **Part IV · Hardened Persistence Boundary** | Ch 10 | [`ch10-cloud-agent-patterns`](https://github.com/the-write-path-code/ch10-cloud-agent-patterns) | Stateless agents that survive container restarts — retrieval decoupled from volatile memory |
+| | Ch 11–13 | [`ch11-13-ucp-a2a-payment-integrity`](https://github.com/the-write-path-code/ch11-13-ucp-a2a-payment-integrity) | Idempotency keys and optimistic concurrency control — retries never become duplicate charges |
+| | Ch 14 | [`ch14-enterprise-ai-assistant`](https://github.com/the-write-path-code/ch14-enterprise-ai-assistant)<br>[`ch14-homecare-visit-triage-agent`](https://github.com/the-write-path-code/ch14-homecare-visit-triage-agent) | Deny-by-default action boundaries, policy gates, and approval holds |
+| **Part V · Continuous Verification** | Ch 15 | [`ch15-agentic-cicd`](https://github.com/the-write-path-code/ch15-agentic-cicd) | Merge gates that block accuracy regressions before they reach production |
 
 ---
 
